@@ -71,6 +71,95 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo部署笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-11-07T13:10:05.000Z" itemprop="datePublished">2021-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/">hexo部署笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="hexo部署笔记"><a href="#hexo部署笔记" class="headerlink" title="hexo部署笔记"></a>hexo部署笔记</h2><h4 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h4><ul>
+<li>安装nodejs<ul>
+<li>node -v </li>
+<li>npm -v</li>
+</ul>
+</li>
+<li>安装cnpm<ul>
+<li>npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a>  (-g 全局安装；cnpm是国内的镜像源)</li>
+<li>cnpm -v（验证cnpm安装是否成功）</li>
+</ul>
+</li>
+<li>安装hexo<ul>
+<li>cnpm install -g hexo-cli</li>
+<li>hexo -v</li>
+</ul>
+</li>
+</ul>
+<h4 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h4><ul>
+<li>新建本地文件夹放置博客mybolg</li>
+<li>初始化博客 “hexo init”</li>
+<li>新建博客  “hexo n ‘博客名字’ “</li>
+<li>清理博客记录  “hexo clean”</li>
+<li>生车博客  “hexo g”</li>
+<li>在本地启动博客  “hexo s”</li>
+</ul>
+<h4 id="将博客部署到远程仓库（github）"><a href="#将博客部署到远程仓库（github）" class="headerlink" title="将博客部署到远程仓库（github）"></a>将博客部署到远程仓库（github）</h4><ul>
+<li><p>新建远程仓库</p>
+<ul>
+<li>仓库名必须为“github昵称.github.io”(ex:SunNYNO1.github.io)</li>
+</ul>
+</li>
+<li><p>安装git部署插件</p>
+<ul>
+<li>cnpm install –save hexo-deployer </li>
+</ul>
+</li>
+<li><p>修改hexo的配置文件config.yml</p>
+<ul>
+<li>配置deployment<br>type: git<br>repo: <a target="_blank" rel="noopener" href="https://github.com/SunNYNO1/SunNYNO1.github.io.git">https://github.com/SunNYNO1/SunNYNO1.github.io.git</a><br>branch: master</li>
+</ul>
+</li>
+<li><p>部署到远端</p>
+<ul>
+<li>git clean</li>
+<li>git g</li>
+<li>git d（需要验证：github username与password  或者是  personal access token）</li>
+<li>生成token方法（github设置–developer settings–personal access tokens– generate token–输入token备注“For Hexo Blog”–全部对勾–generate）</li>
+<li>在远端访问博客：SunNYNO1.github.io</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/" data-id="ckvpah8oz00020ctv8qjheyju" data-title="hexo部署笔记" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -129,10 +218,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="第一章git概述"><a href="#第一章git概述" class="headerlink" title="第一章git概述"></a>第一章git概述</h2><h6 id="什么是版本控制："><a href="#什么是版本控制：" class="headerlink" title="什么是版本控制："></a>什么是版本控制：</h6><ul>
+<h2 id="第一章git概述"><a href="#第一章git概述" class="headerlink" title="第一章git概述"></a>第一章git概述</h2><h4 id="什么是版本控制："><a href="#什么是版本控制：" class="headerlink" title="什么是版本控制："></a>什么是版本控制：</h4><ul>
 <li>用于记录文件内容变化，以查阅不同版本的修订情况，<strong>可以记录文件修改的历史</strong>，<strong>并可以进行版本切换回滚</strong></li>
 </ul>
-<h6 id="分布式版本控制与集中式版本控制："><a href="#分布式版本控制与集中式版本控制：" class="headerlink" title="分布式版本控制与集中式版本控制："></a>分布式版本控制与集中式版本控制：</h6><ul>
+<h4 id="分布式版本控制与集中式版本控制："><a href="#分布式版本控制与集中式版本控制：" class="headerlink" title="分布式版本控制与集中式版本控制："></a>分布式版本控制与集中式版本控制：</h4><ul>
 <li><p>集中式：</p>
 <ul>
 <li>cvs，svn，vss等具有一个集中管理的服务器，用于保存所有版本数据，<strong>每一个人都通过客户端同时在服务器对同一套代码进 行修改</strong></li>
@@ -147,7 +236,7 @@
 </ul>
 </li>
 </ul>
-<h6 id="git历史"><a href="#git历史" class="headerlink" title="git历史"></a>git历史</h6><h6 id="git工作机制"><a href="#git工作机制" class="headerlink" title="git工作机制"></a>git工作机制</h6><ul>
+<h4 id="git历史"><a href="#git历史" class="headerlink" title="git历史"></a>git历史</h4><h4 id="git工作机制"><a href="#git工作机制" class="headerlink" title="git工作机制"></a>git工作机制</h4><ul>
 <li><p>工作区  （写代码，代码存放在磁盘的位置，在工作取crud是没有历史记录的，就是实时的crud，不被记录）<br>—git add—<br>暂存区（临时存储，可以删除，没有生成历史版本）<br>—git commit—<br>本地库（生成历史版本，不可删除修改，永远存在于历史版本中，除非删除本地库）<br>—git push—<br>远程库</p>
 </li>
 <li><p>代码托管中心：基于网络服务器的远程代码仓库，比如github</p>
@@ -157,11 +246,11 @@
 </ul>
 </li>
 </ul>
-<h6 id="git安装与客户端使用"><a href="#git安装与客户端使用" class="headerlink" title="git安装与客户端使用"></a>git安装与客户端使用</h6><h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+<h4 id="git安装与客户端使用"><a href="#git安装与客户端使用" class="headerlink" title="git安装与客户端使用"></a>git安装与客户端使用</h4><h4 id=""><a href="#" class="headerlink" title=""></a></h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckvp834us00006ctv012h1ivh" data-title="git学习笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckvpah8on00000ctvfdsbh9db" data-title="git学习笔记" class="article-share-link">Share</a>
       
       
       
@@ -212,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/04/hello-world/" data-id="ckvp834v000016ctvdha9eolh" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/04/hello-world/" data-id="ckvpah8ov00010ctv2ebe560z" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -253,6 +342,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/">hexo部署笔记</a>
+          </li>
         
           <li>
             <a href="/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">git学习笔记</a>
