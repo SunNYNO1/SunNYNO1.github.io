@@ -146,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/" data-id="ckvpal7t40002nctva5mib7ft" data-title="hexo部署笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/" data-id="ckvpfidc3000278tvdxot2o6n" data-title="hexo部署笔记" class="article-share-link">Share</a>
       
       
       
@@ -235,7 +235,7 @@
 </li>
 </ul>
 <h4 id="git历史"><a href="#git历史" class="headerlink" title="git历史"></a>git历史</h4><h4 id="git工作机制"><a href="#git工作机制" class="headerlink" title="git工作机制"></a>git工作机制</h4><ul>
-<li><p>工作区  （写代码，代码存放在磁盘的位置，在工作取crud是没有历史记录的，就是实时的crud，不被记录）<br>—git add—<br>暂存区（临时存储，可以删除，没有生成历史版本）<br>—git commit—<br>本地库（生成历史版本，不可删除修改，永远存在于历史版本中，除非删除本地库）<br>—git push—<br>远程库</p>
+<li><p>工作区:本地磁盘<br>(磁盘上存放代码的位置，在工作区crud是没有历史记录的，就是实时的crud，不被记录）<br>—git add—<br>暂存区:相当于git的缓存，临时存储<br>（使用该命令后，代码将被git所记-录追踪，被本地git临时记录的地方，可以删除，没有生成历史版本）<br>—git commit—<br>本地库<br>（生成历史版本，不可删除修改，永远存在于历史版本中，除非删除本地库）<br>—git push—<br>远程库</p>
 </li>
 <li><p>代码托管中心：基于网络服务器的远程代码仓库，比如github</p>
 <ul>
@@ -244,11 +244,58 @@
 </ul>
 </li>
 </ul>
-<h4 id="git安装与客户端使用"><a href="#git安装与客户端使用" class="headerlink" title="git安装与客户端使用"></a>git安装与客户端使用</h4><h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+<h4 id="git安装与客户端使用"><a href="#git安装与客户端使用" class="headerlink" title="git安装与客户端使用"></a>git安装与客户端使用</h4><p>##第三章 git常用命令</p>
+<h4 id="设置用户签名："><a href="#设置用户签名：" class="headerlink" title="设置用户签名："></a>设置用户签名：</h4><ul>
+<li>git config –global user.nagitme 用户名</li>
+<li>git config –global user.email 邮箱<br>打开.gitconfig文件查看以上用户配置信息（签名）是否成功（签名作用：区分操作者的身份）<br>与github账号或其他代码托管中心没有关系，只是代表本地客户端的一个签名。</li>
+</ul>
+<h4 id="初始化本地库：-git-init"><a href="#初始化本地库：-git-init" class="headerlink" title="初始化本地库： git init"></a>初始化本地库： git init</h4><ul>
+<li>要用git管理本地的目录，首先需要git获取该目录的管理权</li>
+<li>到指定目录下–在当前目录下打开git bash–使用git init命令初始化该目录–生成.git目录文件（不要修改）</li>
+<li>ll -a : linux环境（git bash环境就是linux环境，因为git与linux是一个人写的，所以两者的命令是一致的）下查看隐藏文件的命令</li>
+</ul>
+<h4 id="查看本地状态-git-status"><a href="#查看本地状态-git-status" class="headerlink" title="查看本地状态: git status"></a>查看本地状态: git status</h4><ul>
+<li>使用该命令后会输出一些log日志， 日志内容：<ul>
+<li>默认分支</li>
+<li>commit 历史纪录</li>
+<li>需要或可以commit的内容：<br>红色文件：未被git追踪的内容，（即没有执行git add）<br>绿色文件：被git追踪的内容，但没有被commit（即没有执行git commit，没有上传到本地库）</li>
+</ul>
+</li>
+</ul>
+<h4 id="添加暂存区：git-add-文件名"><a href="#添加暂存区：git-add-文件名" class="headerlink" title="添加暂存区：git add 文件名"></a>添加暂存区：git add 文件名</h4><ul>
+<li>删除暂存区中文件：git rm –cached 文件名（但在工作区中，该文件没有被删除，只是该文件不再被git追踪）</li>
+</ul>
+<h4 id="提交本地库：git-commit-m-“版本日志信息”-文件名"><a href="#提交本地库：git-commit-m-“版本日志信息”-文件名" class="headerlink" title="提交本地库：git commit -m “版本日志信息” 文件名"></a>提交本地库：git commit -m “版本日志信息” 文件名</h4><ul>
+<li><p>git commit -m “version 11.10” myfile.txt</p>
+<ul>
+<li>执行commit之后,会提示提交内容的变化, 以及本次提交的版本号</li>
+</ul>
+</li>
+<li><p>执行 git commit后，git status状态</p>
+<ul>
+<li>nothing to commit, working tree clean：当前工作区或暂存区中没有需要coommit的内容，工作树是干净的</li>
+</ul>
+</li>
+<li><p>查看版本信息命令：git reflog<br>例子：(HEAD-&gt;master) HEAD@{0}:commit (initial): first commit</p>
+<ul>
+<li>其中，965ca1是commit的版本号（后七位）</li>
+<li>HEAD-&gt;master  HEAD@{0}:commit (initial): first commit 表示当前所处版本</li>
+<li>first commit 表示当时提交commit时，自己填写的版本日志信息</li>
+</ul>
+</li>
+<li><p>查看详细版本信息命令：git log<br>可以看到完整版的版本号，从commit的提交用户信息，提交日期，提交的版本日志信息</p>
+</li>
+</ul>
+<h4 id="修改文件，体验版本迭代"><a href="#修改文件，体验版本迭代" class="headerlink" title="修改文件，体验版本迭代"></a>修改文件，体验版本迭代</h4><ul>
+<li>一但修改文件后，修改后的文件，git status将会是红色，即没有被git追踪</li>
+<li>git add myfile.txt</li>
+<li>git commit -m “second commit” myfile.txt</li>
+</ul>
+<h4 id="版本穿梭："><a href="#版本穿梭：" class="headerlink" title="版本穿梭："></a>版本穿梭：</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckvpal7t00001nctvd3btbqet" data-title="git学习笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckvpfidbq000078tv4mkwgowy" data-title="git学习笔记" class="article-share-link">Share</a>
       
       
       
@@ -299,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/04/hello-world/" data-id="ckvpal7sr0000nctv71on561t" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/04/hello-world/" data-id="ckvpfidby000178tv3btd5bja" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
