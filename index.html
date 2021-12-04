@@ -173,16 +173,75 @@
 </li>
 <li><p>单核与多核cpu的任务执行</p>
 <ul>
-<li>并行与并发</li>
+<li>并行与并发<br>并发：单核cpu同一<strong>时间段</strong>执行多个任务：“假的”多线程<br>并行：多核cpu同同一<strong>时刻</strong>执行多个任务，真正的多线程<br>一个java应用程序java.exe，至少三个线程：main主线程，gc垃圾回收线程，异常处理线程</li>
+</ul>
+</li>
+<li><p>多线程的优点</p>
+<ul>
+<li>对于单核cpu多线程来说：<br>（虽然 使用单个线程顺序执行多个任务，其实要比多个线程并发执行这些任务要快，因为后者需要线程间的切换）<br>（1）用户体验好（多任务并发）：但 这种并发（假多线程），能够让用户在同一时间段进行多项任务，而不用再管理他们，而是让cpu在他们之间切换，让用户体验到并行的感觉<br>（2）cpu利用率高（时间置换cpu利用率）：虽然cpu在多线程间不停切换，花了更多时间，但cpu不会出现空档期，使其被充分利用，而单个线程的顺序执行，在切换任务时，有可能出现cpu闲置的情况，导致cpu无法充分利用<br>（3）程序结构改善：将冗长的进程，多个线程的分割，独立运行，并便于理解修改</li>
+</ul>
+</li>
+<li><p>何时需要多线程</p>
+<ul>
+<li>同时执行多个任务</li>
+<li>等待任务：<br>序列任务中，其中某一步子任务需要等待（例子：刷新网页时，图片比文字加载慢，使用多线程：可以先将文字加载出来，图片处空白；如果没有使用多线程：在图片加载完成前，整个网页都无法显示）</li>
+<li>后台任务</li>
 </ul>
 </li>
 </ul>
-<p>2. </p>
+<ol start="2">
+<li><p>线程创建与使用<br>2.1 继承Thread类</p>
+<pre><code>package com.atguigu.java;
+/**
+* 多线程的创建，方式一：继承于Thread
+* 1.创建Thread子类
+* 2.重写run方法
+* 3.创建子类对象
+* 4。使用start方法启动线程
+*
+* 例子：遍历1000以内的所有偶数
+*/
+//继承Thread子类
+class MyThread extends Thread&#123;
+    private int num;
+    MyThread(int n)&#123;
+        this.num = n;
+    &#125;
+    //    重写run方法
+    @Override
+    public void run() &#123;
+        System.out.println(&quot;子线程开始&quot;);
+        for(int i=0;i&lt;=this.num;i++)&#123;
+            if(i%2==0)&#123;
+                System.out.println(i);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+public class ThreadTest &#123;
+
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;开始主线程&quot;);
+        //创建子类对象
+        MyThread myThread = new MyThread(4);
+        //使用start方法启动Thread：①启动当前线程 ；②调用线程的run方法
+        myThread.start();
+        System.out.println(&quot;回到主线程&quot;);
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>2 </p>
+</li>
+<li><p>线程生命周期</p>
+</li>
+<li></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/23/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B/" data-id="ckwp6krak0000s4tvhr9931v7" data-title="Java基础编程" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/23/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B/" data-id="ckwrdqney000200tvcjfh76z2" data-title="Java基础编程" class="article-share-link">Share</a>
       
       
       
@@ -269,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/" data-id="ckwp6krb90003s4tvd7gvbobk" data-title="hexo部署笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/07/hexo%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/" data-id="ckwrdqnf1000300tvhe5tbge1" data-title="hexo部署笔记" class="article-share-link">Share</a>
       
       
       
@@ -418,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckwp6kras0001s4tvdmupay6j" data-title="git学习笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/07/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckwrdqnet000100tvb95c7ir9" data-title="git学习笔记" class="article-share-link">Share</a>
       
       
       
@@ -469,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/04/hello-world/" data-id="ckwp6kraw0002s4tvgqhoesga" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/04/hello-world/" data-id="ckwrdqnef000000tvawk2bc2y" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
